@@ -5,7 +5,7 @@ import datetime
 from datetime import datetime, timedelta
 
 app = Flask(__name__, static_url_path='/static', static_folder='static')
-openai.api_key = "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"
+openai.api_key = "OPENAPI_AI_KEY"
 app.secret_key = 'applesauce'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=1)
 
