@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <nav>
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('gallery') }}" class="selected">Gallery</a></li>
+    </ul>
+    </nav>
+
+    <div class="container">
+    <div class="note2">
+        <p>If there is no image located at the top of the page, then the APOD is a video. You can view the
+            video at APOD's official website: <a href="https://apod.nasa.gov/apod/astropix.html">APOD Video</a></p></div>
+    <br>
+    <section class="main-content">
+        <h1>Gallery</h1>
+            <h2>{{ data[0]['Title'] }}</h2>
+            <h3>{{ data[0]['Date'] }}</h3>
+            <div class="image-wrapper">
+            <img src="{{ data[0]['APOD'] }}" alt="Nasa image of the day, view description on the home page">
+            </div>
+            <div class="image-thumbnail">
+    {% for item in data %}
+    <div class="image-item">
+        <div class="image-wrapper">
+            <img src="{{ item['DALLE'] }}" alt="AI interpretation of the description of NASA's image of the day">
+            <br><br>
+            <div class="button-container">
+                <a href="{{ item['DALLE'] }}" download="dalle_image.jpg">
+                    <button><span title="Get Image">Click Me!</span></button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+    </section>
+</div>
+
+
+    <footer>
+    <div class="note"><span class="important">&#9733;&#9733; Images will expire after 1 hour so make sure you save
+        them before they're gone! &#9733;&#9733;</span></div>
+    </footer>
+{% endblock %}
