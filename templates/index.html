@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav>
+    <ul>
+        <li><a href="{{ url_for('home') }}" class="selected">Home</a></li>
+        <li><a href="{{ url_for('gallery') }}">Gallery</a></li>
+    </ul>
+    </nav>
+<div class="container">
+    <div class="note2">
+        <p>If there is no image, then the APOD is a video. You can view the
+            video at APOD's official website: <a href="https://apod.nasa.gov/apod/astropix.html">APOD Video</a>
+            <span class="important">However, you can still scroll down to see the AI generated picture!</span></p></div>
+    <section class="main-content">
+        <h1>NASA Astronomy Picture Of The Day</h1>
+        <h2 id="title"></h2>
+        <h3>Date: <span id="date"></span></h3>
+        <div class="image-container">
+        <img id="pic" src="" alt="NASA Astronomy Picture of the day" width="100%">
+        <p id="explanation"></p>
+        </div>
+        <br/>
+        <h1>An AI representation of NASA's <span title="Astronomy Picture of the Day">APOD</span></h1>
+        <img id="yourImageElementId" src="" alt="Generated Image" width="100%">
+        </section>
+    </div>
+
+
+    <footer>
+    <div class="note">&#9733;&#9733; View the gallery to see all the images you created! &#9733;&#9733; </div>
+    </footer>
+{% endblock %}

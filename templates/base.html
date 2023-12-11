@@ -5,78 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/styles.css">
-    <title>Your Website</title>
+    <title>Cosmic Canvas</title>
+
 </head>
 <body>
     <header>
-        <h1>AI in Space</h1>
+        <h2>Cosmic Canvas</h2>
     </header>
 
-    <div class="container">
-    <section class="main-content">
-        <h1>NASA Astronomy Picture Of The Day</h1>
-        <h2 id="title"></h2>
-        <h3>Date: <span id="date"></span></h3>
-        <div class="image-container">
-        <img id="pic" src="" alt="NASA Picture Of The Day" width="100%">
-        <p id="explanation"></p>
-        </div>
-        <br/>
-        <h1>An AI representation of NASA's APOD</h1>
-        <img id="yourImageElementId" src="" alt="Generated Image" width="100%">
-        </section>
-    </div>
+   {% block content %} {% endblock %}
 
-
-<script>
-    // JavaScript to get API information
-    var req = new XMLHttpRequest();
-    var url = "https://api.nasa.gov/planetary/apod?api_key=";
-    var api_key = "NASA_API_KEY";
-
-    req.open("GET", url + api_key, true);
-    req.send();
-
-    req.addEventListener("load", function(){
-    if(req.status == 200 && req.readyState == 4) {
-        var response = JSON.parse(req.responseText);
-        document.getElementById("title").textContent = response.title;
-        document.getElementById("date").textContent = response.date;
-        document.getElementById("pic").src = response.hdurl;
-
-        // Store the explanation in a variable
-        var explanationText = response.explanation;
-        var additionalText = "With an astronaut present, ";
-        var combinedText = additionalText + explanationText;
-
-        // Set the explanation content
-        document.getElementById("explanation").textContent = explanationText;
-
-        // Call fetchGPT with the stored explanation
-        fetchGPT(combinedText, function(imageUrl) {
-            // Update image source using the provided URL
-            document.getElementById("yourImageElementId").src = imageUrl;
-        });
-    }
-});
-
-function fetchGPT(userMessage, callback) {
-    const xhr = new XMLHttpRequest();
-
-    // Use the new endpoint to fetch data
-    xhr.open('GET', '/submit?explanation=' + encodeURIComponent(userMessage), true);
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            const responseJson = JSON.parse(xhr.responseText);
-            const imageUrl = responseJson.image;
-            callback(imageUrl);
-        }
-    };
-
-    xhr.send();
-}
-    </script>
+<script type="text/javascript" src="../static/js-api.js"></script>
 
 </body>
 </html>
