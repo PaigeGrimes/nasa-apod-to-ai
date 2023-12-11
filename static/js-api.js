@@ -1,7 +1,7 @@
 // JavaScript to get API information
     var req = new XMLHttpRequest();
     var url = "https://api.nasa.gov/planetary/apod?api_key=";
-    var api_key = "APOD_KEY";
+    var api_key = "R4dGypqZLzKIeE9djL6OkY7UyNClszSZBPoZjwA5";
 
     req.open("GET", url + api_key, true);
     req.send();
@@ -51,4 +51,10 @@ function fetchGPT(url, callback) {
     };
 
     xhr.send();
+}
+
+
+function refreshPage() {
+    // Reloads the current page
+    location.reload();
 }
