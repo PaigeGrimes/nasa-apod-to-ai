@@ -1,19 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <nav>
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('gallery') }}" class="selected">Gallery</a></li>
-    </ul>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('gallery') }}" class="selected">Gallery</a></li>
+        </ul>
     </nav>
-    <div class="note"><span class="important">&#9733;&#9733; Images will expire after 2 hours so make sure you save them before they're gone! &#9733;&#9733;</span></div>
+    <!-- The user hasn't generated any AI images or the images have expired -->
     <div class="container">
-    <section class="main-content">
-        <h1>Gallery</h1>
-            <h3>There is nothing in the Gallery at this time.</h3>
-    </section>
-</div>
+        <section class="main-content">
+            <h1>Gallery</h1>
+            <h3>404 - There is nothing in the Gallery at this time.</h3>
+             <p><span class="important">&#9733;&#9733; Images will expire after 1 hour so make sure you
+                 save them before they're gone! &#9733;&#9733;</span>
+             </p>
+        </section>
+    </div>
+
+
 
 {%  endblock %}

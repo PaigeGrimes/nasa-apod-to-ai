@@ -1,3 +1,4 @@
+/* Styles for the body and main content */
 body {
     margin: 0;
     font-family: 'Garamond', serif;
@@ -19,43 +20,6 @@ header {
 
 header h1 {
     margin: 0;
-}
-
-nav {
-    text-align: center;
-    background-color: #eee;
-    padding: 10px;
-    font-size: 2em;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-/* Hover effect */
-nav ul li a:hover {
-    color: rgba(10, 157, 108, 0.69); /* Change color on hover */
-}
-
-/* Style for selected/active link */
-nav ul li a.selected {
-    font-weight: bold; /* Example: Bold font for selected link */
-    text-shadow: 2px 2px 5px rgba(10, 125, 180, 0.5); /* Example: Different color for selected link */
-    /* Add any other styles for the selected link */
-
 }
 
 body h1 {
@@ -89,13 +53,51 @@ h2 {
     height: 600px;
     margin-bottom: 20px;
 }
-/* Add this to your existing CSS or in a new style tag in your HTML */
+
+/* Style for the navigation */
+nav {
+    text-align: center;
+    background-color: #eee;
+    padding: 10px;
+    font-size: 2em;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+    color: rgba(10, 157, 108, 0.69); /* Change color on hover */
+}
+
+/* Style for selected/active link */
+nav ul li a.selected {
+    font-weight: bold; /* Bold font for selected link */
+    text-shadow: 2px 2px 5px rgba(10, 125, 180, 0.5); /* Different color for selected link */
+}
+
+/* Image container  */
 .image-container {
     position: relative;
     width: 100%; /* Specify the width you want */
-    height: 300px; /* Specify the height you want */
+    height: auto; /* Specify the height you want */
 }
 
+/* Overlay the text onto the image */
 #explanation {
     position: absolute;
     bottom: 15px;
@@ -116,7 +118,7 @@ h2 {
     opacity: 1;
 }
 
-
+/* Convert the image to a thumbnail */
 .image-thumbnail {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Four items in a column */
@@ -148,6 +150,7 @@ h2 {
     transition: all 0.3s ease;
 }
 
+/* Styles for the button effects */
 .button-container {
     position: absolute;
     bottom: 0;
@@ -170,11 +173,12 @@ h2 {
     background-color: #2d4d5b;
 }
 
-
+/* Make important text red */
 .important {
     color: red;
 }
 
+/* Style for notes to provide the user with more information */
 .note {
     position: absolute;
     left: 20px; /* Adjust right distance */
@@ -182,7 +186,6 @@ h2 {
     color: black; /* Text color */
     padding: 15px 10px; /* Padding */
     border-radius: 4px; /* Rounded corners */
-    /* Add any other styles as needed */
 }
 
 .note2 {
@@ -193,7 +196,7 @@ h2 {
     padding: 3px 20px; /* Padding */
     border-radius: 6px; /* Rounded corners */
     font-size: 0.9em; /* Smaller font size */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adding shadow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding shadow */
     width: 80%;
     text-align: center;
 }

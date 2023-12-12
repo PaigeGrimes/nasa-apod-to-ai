@@ -1,48 +1,66 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <!-- Navigation for home and gallery webpages -->
     <nav>
-    <ul>
-        <li><a href="{{ url_for('home') }}">Home</a></li>
-        <li><a href="{{ url_for('gallery') }}" class="selected">Gallery</a></li>
-    </ul>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('gallery') }}" class="selected">Gallery</a></li>
+        </ul>
     </nav>
 
     <div class="container">
-    <div class="note2">
-        <p>If there is no image located at the top of the page, then the APOD is a video. You can view the
-            video at APOD's official website: <a href="https://apod.nasa.gov/apod/astropix.html">APOD Video</a></p></div>
-    <br>
-    <section class="main-content">
-        <h1>Gallery</h1>
+    <!-- A note to provide users with extra information. For instance, if the APOD is a video. -->
+        <div class="note2">
+            <p>If there is no image located at the top of the page, then the APOD is a video. You can view the
+                video at <a href="https://apod.nasa.gov/apod/astropix.html">APOD's official website.
+                </a>
+            </p>
+        </div>
+        <br/>
+
+        <section class="main-content">
+            <h1>Gallery</h1>
+        <!-- Display todays title -->
             <h2>{{ data[0]['Title'] }}</h2>
             <h3>{{ data[0]['Date'] }}</h3>
+            <!-- Display the image of the day if is not a video -->
             <div class="image-wrapper">
-            <img src="{{ data[0]['APOD'] }}" alt="Nasa image of the day, view description on the home page">
+                <h2 style="text-align: left">Image of the Day: </h2>
+                <hr>
+                <img src="{{ data[0]['APOD'] }}" alt="Nasa image of the day, view description on the home page">
             </div>
+
+            <h2 style="text-align: left">AI Images: </h2>
+            <hr>
             <div class="image-thumbnail">
-    {% for item in data %}
-    <div class="image-item">
-        <div class="image-wrapper">
-            <img src="{{ item['DALLE'] }}" alt="AI interpretation of the description of NASA's image of the day">
-            <br><br>
-            <div class="button-container">
-                <a href="{{ item['DALLE'] }}" download="dalle_image.jpg">
-                    <button><span title="Get Image">Click Me!</span></button>
-                </a>
+            <!-- Display thumbnails of the previously created AI images. If the user would like to save them, they can
+                    click the associated button, which will open the image and allow them to right-click and save. -->
+                {% for item in data %}
+                    <div class="image-item">
+                        <div class="image-wrapper">
+                            <img src="{{ item['DALLE'] }}" alt="AI interpretation of the description of NASA's image of the day">
+                            <br/>
+                            <br/>
+                            <div class="button-container">
+                                <a href="{{ item['DALLE'] }}" download="dalle_image.jpg">
+                                    <button>
+                                        <span title="Get Image">Click Me!</span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
-        </div>
+        </section>
     </div>
-    {% endfor %}
-</div>
-
-
-    </section>
-</div>
-
 
     <footer>
-    <div class="note"><span class="important">&#9733;&#9733; Images will expire after 1 hour so make sure you save
-        them before they're gone! &#9733;&#9733;</span></div>
+    <!-- A note to let users know that the images will expire after 1 hour and will no longer be available to view.
+            This is at the bottom of the page as a footnote to ensure a responsive design. -->
+        <div class="note"><span class="important">&#9733;&#9733; Images will expire after 1 hour so make sure you save
+            them before they're gone! &#9733;&#9733;</span></div>
     </footer>
+
 {% endblock %}

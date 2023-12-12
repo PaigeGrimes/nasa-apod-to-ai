@@ -1,13 +1,16 @@
-// JavaScript to get API information
-    var req = new XMLHttpRequest();
-    var url = "https://api.nasa.gov/planetary/apod?api_key=";
-    var api_key = "R4dGypqZLzKIeE9djL6OkY7UyNClszSZBPoZjwA5";
+// js-api.js
 
-    req.open("GET", url + api_key, true);
-    req.send();
+// Initialize request variables
+var req = new XMLHttpRequest();
+var url = "https://api.nasa.gov/planetary/apod?api_key=";
+var api_key = "DEMO_KEY";
 
-    req.addEventListener("load", function(){
-    if(req.status == 200 && req.readyState == 4) {
+// Get the API url and api_key
+req.open("GET", url + api_key, true);
+req.send();
+
+req.addEventListener("load", function(){
+    if(req.status === 200 && req.readyState === 4) {
         var response = JSON.parse(req.responseText);
         var title = response.title;
         var date = response.date;
@@ -17,7 +20,7 @@
         document.getElementById("date").textContent = response.date;
         document.getElementById("pic").src = response.hdurl;
 
-        // Store the explanation in a variable
+        // Store the api data in a variable to pass it to the '/submit' route
         var explanationText = response.explanation;
         var url = '/submit?' +
             'title=' + encodeURIComponent(title) +
@@ -28,7 +31,7 @@
         // Set the explanation content
         document.getElementById("explanation").textContent = explanationText;
 
-        // Call fetchGPT with the stored explanation
+        // Call fetchGPT with the stored data - it will return an AI image and data will be stored in the database.
         fetchGPT(url, function(imageUrl) {
             // Update image source using the provided URL
             document.getElementById("yourImageElementId").src = imageUrl;
@@ -36,6 +39,7 @@
     }
 });
 
+// Get the OpenAI image from app.py
 function fetchGPT(url, callback) {
     const xhr = new XMLHttpRequest();
 
@@ -53,7 +57,7 @@ function fetchGPT(url, callback) {
     xhr.send();
 }
 
-
+// Allows users to refresh the webpage after clicking a button.
 function refreshPage() {
     // Reloads the current page
     location.reload();
