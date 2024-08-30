@@ -1,7 +1,7 @@
 # README.md
 nasa-apod-to-ai
 
-__Title:__ Galaxy Canvas
+__Title:__ Cosmic Canvas
 
 ## Project Overview: 
 This application empowers users to harness NASA's Astronomy Photo of the Day (APOD) API for AI-driven image development. It seamlessly integrates the APOD image’s with OpenAI’s DALL-E-2 API, generating captivating AI-rendered images based on the provided photo explanations. Users can explore their creations in the Gallery, downloading these original, beautiful images inspired by NASA's visuals for personal use. Explore a captivating, fun way to craft unique images inspired by the wonders of space.
@@ -18,6 +18,8 @@ This application empowers users to harness NASA's Astronomy Photo of the Day (AP
  _Note_: The size field will affect the price of the api. Visit https://openai.com/pricing to learn more about pricing.
 
    ``` openai.api_key = 'OPENAI_API_KEY' ```
+
+   * You can comment out ```import config OPEN_API_KEY, SESSION_KEY``` and hard code the API Key and SESSION Key into the program if you do not wish to create a config file. However, this is not recommended for security purposes.
    
 4. The virtual environment will need to install the following packages in the application terminal:
    *  openai:
